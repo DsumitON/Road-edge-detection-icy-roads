@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/d0d13226-135e-4e87-80fe-7bbb70fb2638
+
 **Road Edge Detection on Icy Roads (Computer Vision)**
 
 
@@ -68,6 +72,7 @@ Use of depth or stereo data for improved robustness
 Adaptation for real-time deployment on robotic platforms
 
 Evaluation on larger winter-road datasets
+
 
 https://www.dropbox.com/scl/fi/6vftd88o2ij74ts5s8bwu/lane_detection_output.avi?rlkey=ahkncmidrlubr4u9a0s15lwlw&st=70ir6mi2&dl=0
 
