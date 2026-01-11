@@ -1,5 +1,7 @@
 **Road Edge Detection on Icy Roads (Computer Vision)**
-Overview
+
+
+**Overview**
 
 This project implements a classical computer vision pipeline for detecting road edges and drivable boundaries in icy, snow-covered, and low-contrast winter road conditions. The work is motivated by challenges in autonomous driving and robotic navigation in Nordic environments, where visual cues such as lane markings are often partially or fully obscured.
 
