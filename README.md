@@ -1,11 +1,11 @@
-#Road Edge Detection on Icy Roads (Computer Vision)
+**Road Edge Detection on Icy Roads (Computer Vision)**
 Overview
 
 This project implements a classical computer vision pipeline for detecting road edges and drivable boundaries in icy, snow-covered, and low-contrast winter road conditions. The work is motivated by challenges in autonomous driving and robotic navigation in Nordic environments, where visual cues such as lane markings are often partially or fully obscured.
 
 The focus of the project is robustness under visually noisy conditions rather than ideal road scenarios.
 
-Key Objectives
+**Key Objectives**
 
 Detect road edges and drivable boundaries in icy and low-contrast environments
 
@@ -15,11 +15,11 @@ Evaluate the stability of detections across varying surface textures
 
 Explore perception techniques relevant to autonomous systems and robotics
 
-Methodology
+**Methodology**
 
 The pipeline is based on classical image processing techniques using OpenCV:
 
-Preprocessing
+**Preprocessing**
 
 Grayscale conversion
 
@@ -48,3 +48,6 @@ Temporal smoothing across frames for stability
 Centerline Estimation
 
 Computation of a virtual centerline between detected road edges
+
+
+https://www.dropbox.com/scl/fi/6vftd88o2ij74ts5s8bwu/lane_detection_output.avi?rlkey=ahkncmidrlubr4u9a0s15lwlw&st=70ir6mi2&dl=0
