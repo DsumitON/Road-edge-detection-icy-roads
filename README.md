@@ -9,78 +9,160 @@ https://github.com/user-attachments/assets/3919724e-4943-4c0c-a566-a9443c88e818
 
 
 
-**Road Edge Detection on Icy Roads (Computer Vision)**
+Road Edge Detection under Icy and Low-Contrast Conditions
+Overview
 
+This project investigates classical computer vision methods for detecting road edges and estimating drivable boundaries in icy, snow-covered, and low-contrast winter conditions.
 
-**Overview**
+Winter road environments introduce several perception challenges:
 
-This project implements a classical computer vision pipeline for detecting road edges and drivable boundaries in icy, snow-covered, and low-contrast winter road conditions. The work is motivated by challenges in autonomous driving and robotic navigation in Nordic environments, where visual cues such as lane markings are often partially or fully obscured.
+Reduced texture and low contrast between road and surroundings
 
-The focus of the project is robustness under visually noisy conditions rather than ideal road scenarios.
+Snow cover obscuring lane markings
 
-**Key Objectives**
+Glare and reflections from ice
 
-Detect road edges and drivable boundaries in icy and low-contrast environments
+Weak or fragmented edge structures
 
-Handle challenging conditions such as snow cover, glare, and poor illumination
+The goal of this project is not to achieve perfect lane detection, but to study the robustness and limitations of classical edge-based methods under visually degraded conditions. The work emphasizes structured experimentation, parameter tuning, and stability analysis.
 
-Evaluate the stability of detections across varying surface textures
+Problem Motivation
 
-Explore perception techniques relevant to autonomous systems and robotics
+Reliable perception in winter conditions is critical for:
 
-**Methodology**
+Autonomous ground vehicles
 
-The pipeline is based on classical image processing techniques using OpenCV:
+Mobile robots operating outdoors
 
-Preprocessing
+Driver assistance systems in Nordic environments
 
-  Grayscale conversion
+Unlike ideal highway datasets, icy roads present weak gradients and inconsistent visual cues. This project explores how far a classical OpenCV-based pipeline can operate before more advanced learning-based methods become necessary.
 
-  Gaussian blurring for noise reduction
+Key Objectives
 
-Edge Detection
+Detect road boundaries in low-contrast icy environments
 
-  Canny edge detector with relaxed thresholds to retain weak edges
-  
-Region of Interest (ROI) Masking
+Maintain detection stability under noise and surface variability
 
-  Polygonal ROI focused on the road area to suppress irrelevant features
+Evaluate sensitivity to parameter tuning
 
-Line Detection
+Analyze failure cases and robustness limitations
 
-  Probabilistic Hough Transform to extract candidate edge segments
+Explore perception pipeline design relevant to autonomous systems
 
-Lane Estimation & Smoothing
+System Pipeline
 
-  Separation of left and right road boundaries based on slope and position
-  
-  Line fitting using least-squares methods
-  
-  Temporal smoothing across frames for stability
+The implementation is based on modular classical image processing techniques using OpenCV.
 
-Centerline Estimation
+1. Preprocessing
 
-  Computation of a virtual centerline between detected road edges
+Grayscale conversion
 
-**Limitations**
+Gaussian blurring for noise reduction
 
-Performance depends on lighting conditions and camera viewpoint
+Contrast normalization (where applicable)
 
-Purely classical approach (no learning-based segmentation)
+Purpose: Improve edge continuity while suppressing high-frequency noise caused by snow texture.
 
-Does not explicitly model road geometry or elevation
+2. Edge Detection
 
-**Future Improvements**
+Canny edge detection with tuned thresholds
 
-Integration of learning-based segmentation models
+Threshold ranges experimentally adjusted to retain weak gradients
 
-Use of depth or stereo data for improved robustness
+Observation: Lower thresholds preserve faint edges but increase noise sensitivity.
 
-Adaptation for real-time deployment on robotic platforms
+3. Region of Interest (ROI) Masking
 
-Evaluation on larger winter-road datasets
+Polygonal mask restricting processing to likely road region
 
+Reduces false positives from sky, trees, and roadside objects
 
+This improves stability and computational efficiency.
+
+4. Line Detection
+
+Probabilistic Hough Transform
+
+Extraction of candidate line segments
+
+Detected segments are filtered based on slope and spatial constraints.
+
+5. Lane Estimation & Smoothing
+
+Separation of left and right boundary candidates
+
+Least-squares line fitting
+
+Temporal smoothing across frames to reduce flickering
+
+Temporal smoothing improves visual stability but introduces slight latency.
+
+6. Centerline Estimation
+
+Virtual centerline computed between left and right boundaries
+
+Provides approximate drivable direction estimate
+
+This demonstrates how perception outputs can be transformed into control-relevant information.
+
+Experimental Observations
+
+Detection stability is highly sensitive to Canny thresholds
+
+Strong glare reduces edge continuity
+
+Snow-covered regions produce fragmented edges
+
+ROI masking significantly reduces false detections
+
+Temporal smoothing improves robustness but may hide sudden detection failures
+
+These observations highlight the limitations of purely gradient-based perception methods in winter conditions.
+
+Limitations
+
+Performance strongly depends on camera viewpoint and lighting
+
+Fixed thresholds do not generalize across environments
+
+No adaptive exposure or contrast enhancement
+
+No learning-based semantic understanding
+
+Not optimized for embedded real-time deployment
+
+Future Improvements
+
+Adaptive thresholding techniques
+
+Histogram equalization for low-contrast enhancement
+
+Comparison with Sobel and Laplacian gradients
+
+Integration of semantic segmentation models
+
+Sensor fusion with depth or stereo input
+
+Deployment benchmarking on embedded platforms
+
+Integration into ROS2 perception pipeline
+
+Engineering Reflection
+
+This project demonstrates that classical edge-based methods can provide baseline functionality in degraded winter conditions, but robustness degrades rapidly under glare and heavy snow coverage.
+
+For industrial perception systems, a hybrid approach combining classical preprocessing with learning-based segmentation would likely provide better generalization and reliability.
+
+The experiment reinforces the importance of:
+
+Structured parameter tuning
+
+Explicit failure case analysis
+
+Modular perception pipeline design
+
+Stability evaluation over time
 https://www.dropbox.com/scl/fi/6vftd88o2ij74ts5s8bwu/lane_detection_output.avi?rlkey=ahkncmidrlubr4u9a0s15lwlw&st=70ir6mi2&dl=0
 
 
